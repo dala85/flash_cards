@@ -1,5 +1,12 @@
 from django import forms
-from .models import Cards
+from .models import Cards, Section
+
+
+class SectionForm(forms.ModelForm):
+
+    class Meta:
+        model = Section
+        fields = '__all__'
 
 
 class CardsForm(forms.ModelForm):

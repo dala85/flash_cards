@@ -1,6 +1,6 @@
 from django.shortcuts import render
-from .models import Cards
-from .forms import CardsForm
+from .models import Cards, Section
+from .forms import CardsForm, SectionForm
 import random
 
 
@@ -10,6 +10,7 @@ import random
 def home_view(request):
 
     obj = Cards.objects.all()
+    obj_section = Section.objects.all()
     template_name = 'flash_cards/flash_cards.html'
     random_number = random.randint(1, 3)
 
@@ -34,7 +35,12 @@ def fill_cards(request):
                 choice_c=form.cleaned_data.get('choice_c'),
                 choice_d=form.cleaned_data.get('choice_d'),
             )
+        form = SectionForm(request.POST)
+        if form.is_valid():
 
+            obj_section = SectionForm.objects.create(
+                section=form.cleaned_data.get('section'),
+            )
     context = {}
 
     return render(request, 'flash_cards/fill_cards.html', context)
