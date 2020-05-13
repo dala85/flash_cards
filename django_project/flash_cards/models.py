@@ -1,10 +1,6 @@
 from django.db import models
 
 
-class Section(models.Model):
-    section = models.CharField(max_length=150)
-
-
 class Cards(models.Model):
     title = models.ForeignKey(Section, on_delete=models.CASCADE)
     question = models.CharField(max_length=200)
