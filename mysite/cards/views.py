@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Cards, Section
+from .models import Cards
 from .forms import CardsForm
 import random
 
@@ -10,8 +10,7 @@ import random
 def home_view(request):
 
     obj = Cards.objects.all()
-    obj_section = Section.objects.all()
-    template_name = 'flash_cards/flash_cards.html'
+    template_name = 'cards/flash_cards.html'
     random_number = random.randint(1, 3)
 
     context = {'obj': obj, 'random_number': random_number}
@@ -19,10 +18,8 @@ def home_view(request):
 
 
 def fill_cards(request):
+    template_name='cards/fill_cards.html'
     if request.method == 'POST':
-        # title = request.POST.get('title')
-        # question = request.POST.get('question')
-        # answer = request.POST.get('answer')
         form = CardsForm(request.POST)
         if form.is_valid():
 
@@ -32,10 +29,10 @@ def fill_cards(request):
                 answer=form.cleaned_data.get('answer'),
                 choice_a=form.cleaned_data.get('choice_a'),
                 choice_b=form.cleaned_data.get('choice_b'),
-                choice_c=form.cleaned_data.get('choice_c'),
-                choice_d=form.cleaned_data.get('choice_d'),
+
             )
 
     context = {}
+    return render(request, template_name, context)
 
-    return render(request, 'flash_cards/fill_cards.html', context)
+
