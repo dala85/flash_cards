@@ -18,7 +18,7 @@ def home_view(request):
 
 
 def fill_cards(request):
-    template_name='cards/fill_cards.html'
+    template_name = 'cards/fill_cards.html'
     if request.method == 'POST':
         form = CardsForm(request.POST)
         if form.is_valid():
@@ -36,3 +36,10 @@ def fill_cards(request):
     return render(request, template_name, context)
 
 
+def view_settings(request):
+
+    obj = Cards.objects.all()
+    template_name = 'cards/view_settings.html'
+
+    context = {'obj': obj}
+    return render(request, template_name, context)
