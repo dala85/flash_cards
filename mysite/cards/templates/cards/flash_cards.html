@@ -38,13 +38,13 @@
 
 /* Style the front side (fallback if image is missing) */
 .flip-card-front {
-  background-color: #5D6D7E    ;
-  color: black;
+  background-color: #ECF0F1    ;
+  color: #2E4053  ;
 }
 
 /* Style the back side */
 .flip-card-back {
-  background-color: #52BE80  ;
+  background-color: #5D6D7E    ;
   color: white;
   transform: rotateY(180deg);
 }
@@ -64,6 +64,10 @@
 .row {margin: 0 -5px;}
 
 
+.font {
+  color: #DC7633;
+}
+
 
 
 /* Responsive columns - one column layout (vertical) on small screens */
@@ -82,18 +86,21 @@
 
 <div class="column">
   <div class="card">
+    <span class="border border-secondary">
                 <div class="flip-card">
                   <div class="flip-card-inner">
                     <div class="flip-card-front">
                       <h3>{{o.title}}</h3>
-                      <p>{{o.question}}</p>
+                      <br>
+                      <h3 class='font'>{{o.question}}</h3>
                     </div>
                     <div class="flip-card-back">
-                      <h4>{{o.answer}}</h4>
+                      <h3>{{o.answer}}</h3>
                     </div>
                   </div>
                 </div>
     </div>
+    </span>
   </div>
 </div>
 
