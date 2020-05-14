@@ -3,16 +3,16 @@
 
         <form method="POST">
             {% csrf_token %}
+            <h3>
             <ul>
-        		<li><input type="text" name="title" placeholder="title"></li>
-        		<li><input type="text" name="question" placeholder="question"></li>
-        		<li><input type="text" name="answer" placeholder="answer"></li>
-        		<li><input type="text" name="choice_a" placeholder="choice_a"></li>
-        		<li><input type="text" name="choice_b" placeholder="choice_b"></li>
+        		<li><input type="text" name="title" placeholder="Title"></li>
+        		<li><input type="text" name="question" placeholder="Question"></li>
+        		<li><input type="text" name="answer" placeholder="Answer"></li>
         		</ul>
+                </h3>
 
             <div class="form-group">
-                <button class="btn btn-outline-info" type="submit">fill</button>
+                <button class="btn btn-outline-info" type="submit">Submit</button>
             </div>
         </form>
         

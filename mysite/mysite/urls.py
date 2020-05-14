@@ -20,5 +20,6 @@ from cards import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.home_view, name='home'),
+    path('memorise/', views.home_view, name='home'),
     path('fill/', views.fill_cards, name='fill_cards'),
 ]
