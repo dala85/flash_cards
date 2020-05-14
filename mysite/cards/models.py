@@ -11,5 +11,5 @@ class Cards(models.Model):
     def __str__(self):
         return self.title
 
-    def get_absolute_url(self):
-        return reverse('cards:view_settings', kwargs={'pk': self.pk})
+    # def get_absolute_url(self):
+    #     return reverse('cards/flash_cards.html', kwargs={'pk': self.pk})

@@ -8,8 +8,8 @@
   background-color: transparent;
   width: 300px;
   height: 200px;
-  border: 1px solid #f1f1f1;
-  perspective: 1000px; /* Remove this if you don't want the 3D effect */
+/*  border: 1px solid #f1f1f1;
+*/  perspective: 1000px; /* Remove this if you don't want the 3D effect */
 }
 
 /* This container is needed to position the front and back side */
@@ -53,7 +53,7 @@
 .column {
   float: left;
   width: 25%;
-  padding: 0 10px;
+  padding:10px;
 }
 
 /* Remove extra left and right margins, due to padding in columns */
@@ -99,6 +99,7 @@ transform: translate(-50%, -50%);
         <div class="flip-card-inner">
           <div class="flip-card-front">
             <div class="card border-info mb-3" >
+
                 <div class="card-header">{{o.title}}</div>
                   <div class="card-body text-info">
                     <h5 class="card-title"></h5>
@@ -110,7 +111,7 @@ transform: translate(-50%, -50%);
                         <div class="card-header">{{o.title}}</div>
                           <div class="card-body">
                         <h5 class="card-title"></h5>
-                        <p class="card-text">{{o.answer}}</p>
+                        <h3 class="card-text">{{o.answer}}</h3>
                       </div>
                   </div>
                 </div>
