@@ -1,7 +1,9 @@
+from django.views.generic import ListView, DetailView, CreateView, DeleteView, UpdateView
 from django.shortcuts import render
 from .models import Cards
-from .forms import CardsForm
+from . import models
 import random
+from django.urls import reverse_lazy
 
 
 # Create your views here.
@@ -17,29 +19,14 @@ def home_view(request):
     return render(request, template_name, context)
 
 
-def fill_cards(request):
-    template_name = 'cards/fill_cards.html'
+def cards_list(request):
+    template_name = 'cards/cards_list.html'
     if request.method == 'POST':
-        form = CardsForm(request.POST)
-        if form.is_valid():
-
-            obj = Cards.objects.create(
-                title=form.cleaned_data.get('title'),
-                question=form.cleaned_data.get('question'),
-                answer=form.cleaned_data.get('answer'),
-                choice_a=form.cleaned_data.get('choice_a'),
-                choice_b=form.cleaned_data.get('choice_b'),
-
-            )
-
-    context = {}
-    return render(request, template_name, context)
-
-
-def view_settings(request):
+        Cards.objects.create(title=request.POST.get('title'),
+                             question=request.POST.get('question'),
+                             answer=request.POST.get('answer'))
 
     obj = Cards.objects.all()
-    template_name = 'cards/view_settings.html'
-
     context = {'obj': obj}
+
     return render(request, template_name, context)

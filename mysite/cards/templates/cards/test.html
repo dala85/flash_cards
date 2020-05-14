@@ -1,0 +1,6 @@
+    <form action = "{% url 'delete'%}" method = "POST"> {% csrf_token %}
+      <td><button class="btn btn-outline-info" type="submit">Delete</button></td>
+      </form>
+      <form action = "{% url 'update'%}" method = "POST"> {% csrf_token %}
+      <td><button class="btn btn-outline-info" type="submit">Update</button></td>
+      </form>
