@@ -1,0 +1,58 @@
+
+
+{% extends 'cards/base.html'%}
+{% block body_block%}
+                   
+<div class='container'>
+<table class="table table-sm">
+  <thead>
+      
+    <tr>
+      <th scope="col">Title</th>
+      <th scope="col">Question</th>
+      <th scope="col">Answer</th>
+      <th scope="col">choice_a</th>
+      <th scope="col">choice_b</th>
+      <th scope="col">#</th>
+    </tr>
+  </thead>
+      <tr>
+      <td><form method='POST'>{%csrf_token%} <input type="text" name="title" placeholder="title"></td>
+      <td><form method='POST'>{%csrf_token%} <input type="text" name="question" placeholder="question"></td>
+      <td><form method='POST'>{%csrf_token%} <input type="text" name="answer" placeholder="answer"></td>
+      <td><form method='POST'>{%csrf_token%} <input type="text" name="choice_a" placeholder="answer"></td>
+      <td><form method='POST'>{%csrf_token%} <input type="text" name="choice_b" placeholder="answer"></td>
+      
+      <td>
+            <form method='POST' action="{%url 'new_qa'%}">{%csrf_token%} 
+              <button class="btn btn-success" type="submit"> _new _ </button>
+            </form>
+      </td>
+
+
+    </tr>
+  {%for o in obj%}
+  <tbody>
+    <tr>
+      <td>{{o.title}}</td>
+      <td>{{o.question}}</td>
+      <td>{{o.answer}}</td>
+      <td>{{o.choice_a}}</td>
+      <td>{{o.choice_b}}</td>
+      
+      <td>
+      
+        <a class='btn btn-danger' href="{% url 'delete_qa' pk=o.pk %}">Delete</a>
+            
+      </td>
+
+    </tr>
+ {%endfor%}
+  </tbody>
+</table>
+</div>
+
+  {%endblock%}
+
+
+

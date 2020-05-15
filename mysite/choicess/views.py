@@ -62,7 +62,22 @@ def result_view(request):
 
 
 def new_qa(request):
+    if request.method == 'POST':
+        Choicess.objects.create(title=request.POST.get('title'),
+                                question=request.POST.get('question'),
+                                answer=request.POST.get('answer'),
+                                choice_a=request.POST.get('choice_a'),
+                                choice_b=request.POST.get('choice_a'))
 
-    template_name = 'choicess/result_view.html'
+    obj = Choicess.objects.all()
+    context = {'obj': obj}
 
-    return render(request, template_name, {})
+    template_name = 'choicess/new_qa.html'
+
+    return render(request, template_name, context)
+
+
+class ChoiceDeleteView(DeleteView):
+
+    model = models.Choicess
+    success_url = reverse_lazy('new_qa')
