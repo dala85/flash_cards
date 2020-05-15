@@ -28,7 +28,6 @@ def choicess_qa(request):
         else:
             user_answer.append(2)
 
-    print(user_answer, counter, len(id_list))
     template_name = 'choicess/choicess_view.html'
 
     context = {'choice': choice_selected,
@@ -55,10 +54,15 @@ def choicess_view(request):
 
 def result_view(request):
     obj = Choicess.objects.all()
-    template_name = 'choicess/test.html'
+    template_name = 'choicess/result_view.html'
     print(user_answer)
-
-    context = {'choice': obj, 'colored_card': user_answer}
+    zipped_data = zip(obj, user_answer)
+    context = {'zipped_data': zipped_data}
     return render(request, template_name, context)
 
-    #
+
+def new_qa(request):
+
+    template_name = 'choicess/result_view.html'
+
+    return render(request, template_name, {})

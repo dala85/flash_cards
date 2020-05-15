@@ -1,0 +1,53 @@
+
+
+{% extends 'cards/base.html'%}
+{% block body_block%}
+
+
+
+
+<div class="container">
+ 
+
+<table class="table table-sm">
+  <thead>
+    <tr>
+      <th scope="col">Title</th>
+      <th scope="col">Question</th>
+      <th scope="col">Correct Answer</th>
+    </tr>
+  </thead>
+  <tbody>
+  	 {% for o, j in zipped_data %}
+  	{%if j == 1 %}
+    <tr>
+ 
+      <td>{{o.title}}</td>
+      <td>{{o.question}}</td>
+      <td>{{o.answer}}</td>
+    </tr>
+ {%else%} 
+ <tr>
+      
+      <td class="bg-danger">{{o.title}}</td>
+      <td class="bg-danger">{{o.question}}</td>
+      <td class="bg-danger">{{o.answer}}</td>
+    </tr>
+      {%endif%} 
+
+ {%endfor%}
+</table>
+
+</div>
+
+
+
+
+
+
+
+{% endblock %}
+
+
+
+
