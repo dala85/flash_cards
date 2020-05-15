@@ -1,0 +1,61 @@
+
+{% extends 'cards/base.html'%}
+{% block body_block%}
+
+<style>
+	/* Float four columns side by side */
+.column {
+float: left;
+width: 25%;
+padding:10px;
+position: relative;
+
+</style>
+
+
+{%for o in obj%}
+
+
+
+<div class='column'>
+
+	
+
+<div class="card border-dark mb-3" style="max-width: 18rem;">
+
+
+  <div class="card-header">{{o.title}}</div>
+  <div class="card-body">
+    <h5 class="card-title">{{o.question}}</h5>
+
+    <label class="card-text">
+    <input type="radio" class="btn btn-outline-warning" name='answer' checked>{{o.answer}}
+    
+	</label>
+	<br>
+	 <label class="card-text">
+    <input type="radio" class="btn btn-outline-warning" name='choice_a'>{{o.choice_a}}
+	</label>
+	<br>
+	 <label class="card-text">
+    <input type="radio" class="btn btn-outline-warning" name='choice_b'>{{o.choice_b}}
+	</label>
+
+
+
+
+  </div>
+</div>
+</div>
+</div>
+
+
+
+
+
+
+{%endfor%}
+
+
+
+{% endblock %}

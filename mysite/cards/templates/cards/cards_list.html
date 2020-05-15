@@ -1,3 +1,5 @@
+
+
 {% extends 'cards/base.html'%}
 {% block body_block%}
                    
@@ -33,9 +35,9 @@
       <td>{{o.answer}}</td>
       <td>{{o.id}}</td>
       <td>
-            <form method='POST' action="{%url 'cards_list'%}">{%csrf_token%} 
-              <button class='btn btn-danger' type="submit">Delete</button>
-            </form>
+      
+        <a class='btn btn-danger' href="{% url 'delete' pk=o.pk %}">Delete</a>
+            
       </td>
 
     </tr>

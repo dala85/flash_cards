@@ -1,49 +1,22 @@
 
 
-{% extends 'cards/base.html'%}
-{% block body_block%}
-                   
-<div class='container'>
-<table class="table table-striped">
-  <thead>
-      
-    <tr>
-      <th scope="col">Title</th>
-      <th scope="col">Question</th>
-      <th scope="col">Answer</th>
-      <th scope="col">ID</th>
-    </tr>
-  </thead>
-      <tr>
-      <td><form method='POST'>{%csrf_token%} <input type="text" name="title" placeholder="title"></td>
-      <td><form method='POST'>{%csrf_token%} <input type="text" name="question" placeholder="question"></td>
-      <td><form method='POST'>{%csrf_token%} <input type="text" name="answer" placeholder="answer"></td>
-      <td>#</td>
-      <td>
-            <form method='POST' action="{%url 'cards_list'%}">{%csrf_token%} 
-              <button class="btn btn-success" type="submit"> _new _ </button>
-            </form>
-      </td>
+<div class="btn-group btn-group-toggle" data-toggle="buttons">
+    <label class="btn btn-outline-secondary">
+        <input type="radio" name="4_cards" id="4_cards" autocomplete="off" value="parul_bot" > 4 cards
 
+          </label>
+            <label class="btn btn-outline-secondary">
+              <input type="radio" name="10_cards" id="10_cards" autocomplete="off" value="basebot"> 10 cards
+            </label>
+                  
+            <label class="btn btn-outline-secondary">
+              <input type="radio" name="all_cards" id="all_cards" autocomplete="off" value="glossary_bot" > 
+              </label>
 
-    </tr>
-  {%for o in obj%}
-  <tbody>
-    <tr>
-      <td>{{o.title}}</td>
-      <td>{{o.question}}</td>
-      <td>{{o.answer}}</td>
-      <td>{{o.id}}</td>
-      <td>
-      
-        <a class='btn btn-danger' href="{% url 'delete' pk=o.pk %}">Delete</a>
+  </div>
+            <div class="btn-group btn-group-toggle" data-toggle="buttons">
             
-      </td>
-
-    </tr>
- {%endfor%}
-  </tbody>
-</table>
-</div>
-
-  {%endblock%}
+            <label class="btn btn-outline-secondary">
+            <form method='POST' action="{%url 'flash_cards'%}">{%csrf_token%} 
+              <button class="btn btn-success" type="submit" name='all_cards'>  All cards </button>
+            </form>

@@ -13,14 +13,13 @@ def home_view(request):
 
     obj = Cards.objects.all()
     template_name = 'cards/flash_cards.html'
-    random_number = random.randint(1, 3)
-
-    context = {'obj': obj, 'random_number': random_number}
+    
+    context = {'obj': obj}
     return render(request, template_name, context)
 
 
 def cards_list(request):
-    template_name = 'cards/test2.html'
+    template_name = 'cards/cards_list.html'
     if request.method == 'POST':
         Cards.objects.create(title=request.POST.get('title'),
                              question=request.POST.get('question'),

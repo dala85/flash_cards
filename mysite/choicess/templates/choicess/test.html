@@ -1,0 +1,67 @@
+
+{% extends 'cards/base.html'%}
+{% block body_block%}
+
+<style>
+	/* Float four columns side by side */
+.column {
+float: left;
+width: 25%;
+padding:10px;
+position: relative;
+
+</style>
+
+
+
+
+
+
+<div class='column'>
+
+	
+
+<div class="card border-dark mb-3" style="max-width: 18rem;">
+
+
+  <div class="card-header">{{choice.title}}</div>
+  <div class="card-body">
+    <h5 class="card-title">{{choice.question}}</h5>
+
+    <label class="card-text">
+   {{choice.answer}} 
+     <form method='POST' action="{%url 'qa'%}">{%csrf_token%} 
+    <input class="btn btn-success" type="submit" name='correct'></input>
+    </form>
+	</label>
+	<br>
+
+	 <label class="card-text">
+    {{choice.choice_a}}
+     <form method='POST' action="{%url 'qa'%}">{%csrf_token%} 
+    <input class="btn btn-success" type="submit" name='2'></input>
+    </form>
+	</label>
+	<br>
+
+	 <label class="card-text">
+    {{choice.choice_b}}
+    <form method='POST' action="{%url 'qa'%}">{%csrf_token%} 
+    <input class="btn btn-success" type="submit" name='3'></input>
+    </form>
+	</label>
+  </div>
+</div>
+</div>
+</div>
+             
+
+
+
+
+
+
+
+
+
+{% endblock %}
