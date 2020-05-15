@@ -2,59 +2,63 @@
 {% extends 'cards/base.html'%}
 {% block body_block%}
 
-<style>
-	/* Float four columns side by side */
-.column {
-float: left;
-width: 25%;
-padding:10px;
-position: relative;
 
-</style>
+{%if stop == 0 %}
 
-
-{%for o in obj%}
-
+<h1><a href="{%url 'result'%}">see result</a></h1>
+<!-- {%for u in user_answer%}
+{%if u == 1%}
+<h1>true</h1>
+{%else%}
+<h1>false</h1>
+{%endif%}
+{%endfor%} -->
 
 
-<div class='column'>
+{%else%}
 
-	
+<div class="container" style="position: absolute;
+  left: 50%;
+  top: 50%;transform: translate(-50%, -50%);">
 
-<div class="card border-dark mb-3" style="max-width: 18rem;">
-
-
-  <div class="card-header">{{o.title}}</div>
+<div class="card border-info mb-3" style="max-width: 18rem;">
+ <div class="card-header">{{choice.title}}</div>
   <div class="card-body">
-    <h5 class="card-title">{{o.question}}</h5>
+    <h5 class="card-title">{{choice.question}}</h5>
 
     <label class="card-text">
-    <input type="radio" class="btn btn-outline-warning" name='answer' checked>{{o.answer}}
-    
+   {{choice.answer}} 
+     <form method='POST' action="{%url 'qa'%}">{%csrf_token%} 
+    <input class="btn btn-success" type="submit" name='correct'></input>
+    </form>
 	</label>
 	<br>
+
 	 <label class="card-text">
-    <input type="radio" class="btn btn-outline-warning" name='choice_a'>{{o.choice_a}}
+    {{choice.choice_a}}
+     <form method='POST' action="{%url 'qa'%}">{%csrf_token%} 
+    <input class="btn btn-success" type="submit" name='2'></input>
+    </form>
 	</label>
 	<br>
+
 	 <label class="card-text">
-    <input type="radio" class="btn btn-outline-warning" name='choice_b'>{{o.choice_b}}
+    {{choice.choice_b}}
+    <form method='POST' action="{%url 'qa'%}">{%csrf_token%} 
+    <input class="btn btn-success" type="submit" name='3'></input>
+    </form>
 	</label>
-
-
-
-
   </div>
 </div>
 </div>
 </div>
 
+{%endif%}
 
 
+             
 
 
-
-{%endfor%}
 
 
 
